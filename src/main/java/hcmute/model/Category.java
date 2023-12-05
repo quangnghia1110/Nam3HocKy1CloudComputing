@@ -33,6 +33,7 @@ public class Category extends UserDateAudit {
 	
 	@OneToMany(mappedBy = "category",cascade = CascadeType.ALL,
 			orphanRemoval = true)
+<<<<<<< HEAD
 	private List<Laptop> laptops;
 
 	@OneToOne
@@ -48,6 +49,23 @@ public class Category extends UserDateAudit {
 			this.laptops = null;
 		}
 		this.laptops = laptops;
+=======
+	private List<Book> books;
+
+	@OneToOne
+	@JoinColumn(name = "image_id", referencedColumnName = "id")
+	private Image image;
+
+	public List<Book> getBooks() {
+		return books == null ? null : new ArrayList<Book>(this.books);
+	}
+
+	public void setBooks(List<Book> books) {
+		if(books == null) {
+			this.books = null;
+		}
+		this.books = books;
+>>>>>>> branch 'master' of https://github.com/quangnghia1110/doancuoiky.git
 	}
 	
 	public String getDomain(){

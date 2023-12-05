@@ -34,8 +34,13 @@ public class Feedback extends UserDateAudit {
 	
 	
 	@ManyToOne
+<<<<<<< HEAD
 	@JoinColumn(name = "laptop_id", referencedColumnName = "id")
 	private Laptop laptop;
+=======
+	@JoinColumn(name = "book_id", referencedColumnName = "id")
+	private Book book;
+>>>>>>> branch 'master' of https://github.com/quangnghia1110/doancuoiky.git
 	
 	@Column(name = "content", length = 200)
 	private String content;

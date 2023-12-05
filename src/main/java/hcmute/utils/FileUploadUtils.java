@@ -18,8 +18,13 @@ public class FileUploadUtils {
 		Files.write(fileNameAndPath, file.getBytes());
 		return fileNameAndPath;
 	}
+<<<<<<< HEAD
 	public static Path saveLaptopImage(MultipartFile file, Long laptopId) throws IOException {
 		Path fileNameAndPath = Paths.get(AppConstant.UPLOAD_LAPTOP_DIRECTORY, laptopId.toString()+".png");
+=======
+	public static Path saveBookImage(MultipartFile file, Long bookId) throws IOException {
+		Path fileNameAndPath = Paths.get(AppConstant.UPLOAD_BOOK_DIRECTORY, bookId.toString()+".png");
+>>>>>>> branch 'master' of https://github.com/quangnghia1110/doancuoiky.git
 		Files.write(fileNameAndPath, file.getBytes());
 		return fileNameAndPath;
 	}

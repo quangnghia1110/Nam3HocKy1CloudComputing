@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< HEAD
 import hcmute.dto.LaptopForm;
 import hcmute.model.Laptop;
 import hcmute.model.Feedback;
@@ -71,6 +72,66 @@ public class ShopDetailController {
 		LaptopForm book = bookService.getById(Long.parseLong(bookId)); 
 		int sold = bookService.getSoldNumberById(Long.parseLong(bookId));
 		List<Laptop> topFeatured = bookService.getTopFeatured();
+=======
+import hcmute.dto.BookForm;
+import hcmute.model.Book;
+import hcmute.model.Feedback;
+import hcmute.model.user.User;
+import hcmute.security.UserPrincipal;
+import hcmute.service.IBookService;
+import hcmute.service.IFeedbackService;
+import hcmute.service.IOrderService;
+import hcmute.service.IUserService;
+import lombok.extern.slf4j.Slf4j;
+
+
+
+@Controller
+@RequestMapping("/shop-detail")
+@Slf4j
+public class ShopDetailController {
+
+	@Autowired
+	IBookService bookService;
+	
+	@Autowired
+	IFeedbackService feedbackService;
+	
+	@Autowired
+	IUserService userService;
+	
+	@Autowired
+	IOrderService orderService;
+	
+	@GetMapping
+	public ModelAndView viewShopDetailPage(
+			ModelAndView mav,
+			@RequestParam("bookId") String bookId) throws ParseException {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Boolean isComment = false;
+		try {
+			User user = new User();
+			
+			if(Objects.nonNull(authentication)) {
+				UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+				user = userService.getUserById(userPrincipal.getId());
+				isComment = orderService.ExistByUserAndBook(user, Long.parseLong(bookId));
+
+			}
+			
+		}catch(Exception e) {
+			
+		}
+		mav.addObject("isComment", isComment.toString());
+		
+		
+		
+
+		
+		BookForm book = bookService.getById(Long.parseLong(bookId)); 
+		int sold = bookService.getSoldNumberById(Long.parseLong(bookId));
+		List<Book> topFeatured = bookService.getTopFeatured();
+>>>>>>> branch 'master' of https://github.com/quangnghia1110/doancuoiky.git
 		List<Feedback> feedbacks = feedbackService.getFeedbacksById(Long.parseLong(bookId));
 		
 		mav.addObject("feedbacks", feedbacks);

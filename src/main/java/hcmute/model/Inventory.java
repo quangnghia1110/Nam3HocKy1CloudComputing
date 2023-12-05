@@ -33,5 +33,9 @@ public class Inventory extends UserDateAudit{
 	private Integer quantiy;
 	
 	@OneToOne(mappedBy = "inventory", fetch = FetchType.LAZY)
+<<<<<<< HEAD
 	private Laptop laptop;
+=======
+	private Book book;
+>>>>>>> branch 'master' of https://github.com/quangnghia1110/doancuoiky.git
 }
