@@ -9,20 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import hcmute.dto.OrderShow;
-<<<<<<< HEAD
 import hcmute.model.order.OrderTrack;
 import hcmute.service.IOrderService;
 import hcmute.service.IOrderTrackService;
-=======
-import hcmute.model.Author;
-import hcmute.model.Category;
-import hcmute.model.Language;
-import hcmute.model.order.OrderTrack;
-import hcmute.model.user.User;
-import hcmute.service.IOrderService;
-import hcmute.service.IOrderTrackService;
-import hcmute.service.IUserService;
->>>>>>> branch 'master' of https://github.com/quangnghia1110/doancuoiky.git
 
 import java.io.IOException;
 import java.text.ParseException;

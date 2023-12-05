@@ -34,7 +34,6 @@ public class CartItem extends UserDateAudit {
     private Integer quantity;
 
     @ManyToOne
-<<<<<<< HEAD
     @JoinColumn(name = "laptop_id", referencedColumnName = "id", nullable = false)
     private Laptop laptop;
 
@@ -44,16 +43,5 @@ public class CartItem extends UserDateAudit {
 
     public Long getTotalPrice() {
         return quantity * laptop.getPrice();
-=======
-    @JoinColumn(name = "book_id", referencedColumnName = "id", nullable = false)
-    private Book book;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cart_id", referencedColumnName = "id")
-    private Cart cart;
-
-    public Long getTotalPrice() {
-        return quantity * book.getPrice();
->>>>>>> branch 'master' of https://github.com/quangnghia1110/doancuoiky.git
     }
 }

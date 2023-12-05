@@ -60,7 +60,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Rollback(false)
 public class InsertData {
-
+/*
 	@Autowired
 	RoleRepository roleRepository;
 
@@ -423,7 +423,7 @@ public class InsertData {
 		// Create new inventory for Book10
 		Inventory inventoryForBook10 = new Inventory();
 		inventoryForBook10.setQuantiy(10);
-		inventoryForBook10.setBook(null);
+		inventoryForBook10.setLaptop(null);
 		Inventory inventorySaved10 = inventoryRepository.save(inventoryForBook10);
 
 		// Create new Thumbnail for Book1
@@ -685,7 +685,7 @@ public class InsertData {
 		Cart cartKiet = userKiet.getCart();
 
 		// get Book 1
-		Book book1 = bookRepository.findByTitle("Tôi thấy hoa vàng trên cỏ xanh");
+		Laptop book1 = bookRepository.findByTitle("Tôi thấy hoa vàng trên cỏ xanh");
 		if (Objects.isNull(book1)) {
 			log.error(AppConstant.BOOK_NOT_FOUND + " Tôi thấy hoa vàng trên cỏ xanh");
 		}
@@ -700,14 +700,14 @@ public class InsertData {
 		CartItem cartItem1 = new CartItem();
 		cartItem1.setQuantity(1);
 		cartItem1.setCart(cartKiet);
-		cartItem1.setBook(book1);
+		cartItem1.setLaptop(book1);
 		cartItemReposirory.save(cartItem1);
 
 		// Create cartItem2 for user Kiet
 		CartItem cartItem2 = new CartItem();
 		cartItem2.setQuantity(3);
 		cartItem2.setCart(cartKiet);
-		cartItem2.setBook(book2);
+		cartItem2.setLaptop(book2);
 		cartItemReposirory.save(cartItem2);
 
 	}
@@ -804,14 +804,14 @@ public class InsertData {
 		// Create OrderItem1 for order1
 		OrderItem orderItem1 = new OrderItem();
 		orderItem1.setQuantity(2);
-		orderItem1.setBook(book1);
+		orderItem1.setLaptop(book1);
 		orderItem1.setOrder(order1);
 		orderItemRepository.save(orderItem1);
 
 		// Create OrderItem2 for order1
 		OrderItem orderItem2 = new OrderItem();
 		orderItem2.setQuantity(3);
-		orderItem2.setBook(book2);
+		orderItem2.setLaptop(book2);
 		orderItem2.setOrder(order1);
 		orderItemRepository.save(orderItem2);
 
@@ -913,7 +913,7 @@ public class InsertData {
 		// Create new feedback
 		Feedback feedback = new Feedback();
 		feedback.setUser(user);
-		feedback.setBook(book);
+		feedback.setLaptop(book);
 		feedback.setRating(4);
 		feedback.setContent("Quá hay");
 	
@@ -1004,5 +1004,5 @@ public class InsertData {
 		userRepository.save(user);
 
 	}
-
+*/
 }

@@ -41,12 +41,5 @@ public class Image {
 	private User user;
 	
 	@OneToOne(mappedBy = "image", fetch = FetchType.LAZY)
-<<<<<<< HEAD
 	private Laptop laptop;
-=======
-	private Book book;
-	
-	@OneToOne(mappedBy = "image", fetch = FetchType.LAZY)
-	private Blog blog;
->>>>>>> branch 'master' of https://github.com/quangnghia1110/doancuoiky.git
 }

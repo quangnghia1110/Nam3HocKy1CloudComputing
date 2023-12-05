@@ -4,11 +4,7 @@ public class AppConstant {
 	
 	public static final String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/uploads";
 	public static final String UPLOAD_USER_DIRECTORY = System.getProperty("user.dir") + "/uploads/users";
-<<<<<<< HEAD
 	public static final String UPLOAD_LAPTOP_DIRECTORY = System.getProperty("user.dir") + "/uploads/laptops";
-=======
-	public static final String UPLOAD_BOOK_DIRECTORY = System.getProperty("user.dir") + "/uploads/books";
->>>>>>> branch 'master' of https://github.com/quangnghia1110/doancuoiky.git
 	public static final String UPLOAD_BLOG_DIRECTORY = System.getProperty("user.dir") + "/uploads/blogs";
 	public static final String UPLOAD_CATEGORY_DIRECTORY = System.getProperty("user.dir") + "/uploads/categories";;
 	public static final String ROLE_NOT_FOUND = "Not found role with name: ";

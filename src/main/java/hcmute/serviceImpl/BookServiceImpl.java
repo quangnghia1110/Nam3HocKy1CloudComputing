@@ -80,7 +80,7 @@ public class BookServiceImpl implements IBookService {
 
 		Book bookSaved = bookRepository.save(book);
 		if (!bookForm.getFile().isEmpty()) {
-			Path fileNameAndPath = FileUploadUtils.saveBookImage(bookForm.getFile(), bookSaved.getId());
+			Path fileNameAndPath = FileUploadUtils.saveLaptopImage(bookForm.getFile(), bookSaved.getId());
 			Image image = new Image();
 			image.setTitle(bookSaved.getId().toString() + ".png");
 			image.setUrl(fileNameAndPath.toString());
@@ -292,7 +292,7 @@ public class BookServiceImpl implements IBookService {
 
 			Book bookSaved = bookRepository.save(book);
 			if (!bookForm.getFile().isEmpty()) {
-				Path fileNameAndPath = FileUploadUtils.saveBookImage(bookForm.getFile(), bookSaved.getId());
+				Path fileNameAndPath = FileUploadUtils.saveLaptopImage(bookForm.getFile(), bookSaved.getId());
 				Image image = new Image();
 				image.setTitle(bookSaved.getId().toString() + ".png");
 				image.setUrl(fileNameAndPath.toString());
@@ -374,7 +374,7 @@ public class BookServiceImpl implements IBookService {
 		for (Order order : orders) {
 			if (!order.getOrderTrack().getStatus().equals("Chờ thanh toán")) {
 				for (OrderItem orderItem : order.getOrderItems()) {
-					if (orderItem.getBook().getId() == bookId) {
+					if (orderItem.getLaptop().getId() == bookId) {
 						sold = sold + orderItem.getQuantity();
 					}
 
