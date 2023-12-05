@@ -28,17 +28,14 @@ public class HomeController {
 	ICategoryService categoryService;
 	
 	@Autowired
-	ILaptopService bookService;
+	ILaptopService laptopService;
 	
 
 	@GetMapping
 	public ModelAndView home(ModelAndView mav) {
 		List<Category> categories = categoryService.getAllCategories();
-			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		//System.out.println(categories.get(1).getImage().getUrl());
-			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		List<Laptop> topFeatured = bookService.getTopFeatured();
-		List<Laptop> bestSeller = bookService.getBestSeller();
+		List<Laptop> topFeatured = laptopService.getTopFeatured();
+		List<Laptop> bestSeller = laptopService.getBestSeller();
 		mav.addObject("categories", categories);
 		mav.addObject("topFeatured", topFeatured);
 		mav.addObject("bestSeller", bestSeller);
