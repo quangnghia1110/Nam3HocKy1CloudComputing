@@ -2,6 +2,7 @@ package hcmute.serviceImpl;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,21 +42,21 @@ public class CartServiceImpl implements ICartService {
             log.error(AppConstant.USER_NOT_FOUND + userId);
             return null;
         }
-        Cart cart = cartReposiroty.findByUser(user);
-        return cart;
+        Optional<Cart> cart = cartReposiroty.findById(user.getCart().getId());
+        return cart.get();
     }
 
     @Override
     public void addToCart(User user, Long bookId, int quantity) {
 
-        Cart cart = cartReposiroty.findByUser(user);
+        Optional<Cart> cart = cartReposiroty.findById(user.getCart().getId());
 
         if (Objects.isNull(cart)) {
             log.error(AppConstant.CART_NOT_FOUND + user.getId());
             return;
         }
 
-        List<CartItem> cartItems = cart.getCartItems();
+        List<CartItem> cartItems = cart.get().getCartItems();
 
         for (CartItem cartItem : cartItems) {
             if (bookId == cartItem.getBook().getId()) {
@@ -76,7 +77,7 @@ public class CartServiceImpl implements ICartService {
         CartItem cartItem = new CartItem();
         cartItem.setBook(book);
         cartItem.setQuantity(quantity);
-        cartItem.setCart(cart);
+        cartItem.setCart(cart.get());
         cartItemReposirory.save(cartItem);
     }
 
