@@ -4,29 +4,23 @@
 <head>
 	<div th:replace="~{admin/fragments/header :: header}"></div>
 	<div th:replace="~{client/fragments/header :: header}"></div>
-	 	<div>
-	 		<title>Đăng nhập</title>
-		    <meta name="keywords" content="">
-		    <meta name="description" content="">
-		    <meta name="author" content="">
-	 	</div>
 </head>
 
 <body>
 	<div th:replace="~{client/fragments/main-top :: mainTop}"></div>
-    <div class="container">
+    <div class="container" style="border-radius: 15px;">
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
+                <div class="card o-hidden border-0 shadow-lg my-5" style="border-radius: 15px;">
+                    <div class="card-body p-0" style="border-radius: 15px;">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block">
-                            	<img class="img-fluid" th:src="@{/images/login-image.jpg}"/>
+                            <div class="col-lg-6 d-none d-lg-block" style="margin-top: 120px;">
+                            	<img class="img-fluid" th:src="@{/images/login.jpg}"/>
                             </div>
                             
                             <div class="col-lg-6">
@@ -69,7 +63,6 @@
                                         <a th:href="@{/oauth2/authorization/facebook}" class="btn btn-facebook btn-user btn-block">
                                             <i class="#"></i> Đăng nhập với Facebook
                                         </a>
-                                       
                                     </form>
                                     <hr>
                                     <div class="text-center">
@@ -101,8 +94,6 @@
 	    <!-- Custom scripts for all pages-->
 	    <script src="js/sb-admin-2.min.js"></script>
 	</footer>
-
-
 </body>
 
 </html>

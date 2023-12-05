@@ -16,43 +16,42 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 
-import com.metis.book.model.Aim;
-import com.metis.book.model.Author;
-import com.metis.book.model.Blog;
-import com.metis.book.model.Book;
-import com.metis.book.model.Cart;
-import com.metis.book.model.CartItem;
-import com.metis.book.model.Category;
-import com.metis.book.model.Feedback;
-import com.metis.book.model.Image;
-import com.metis.book.model.Inventory;
-import com.metis.book.model.Language;
-import com.metis.book.model.order.OrderItem;
-import com.metis.book.model.order.OrderTrack;
-import com.metis.book.model.user.Address;
-import com.metis.book.model.user.Role;
-import com.metis.book.model.user.RoleName;
-import com.metis.book.model.user.User;
-import com.metis.book.repository.AddressRepository;
-import com.metis.book.repository.AimRepository;
-import com.metis.book.repository.AuthorRepository;
-import com.metis.book.repository.BlogRepository;
-import com.metis.book.repository.BookRepository;
-import com.metis.book.repository.CartItemReposirory;
-import com.metis.book.repository.CartReposiroty;
-import com.metis.book.repository.CategoryRepository;
-import com.metis.book.repository.FeedbackRepository;
-import com.metis.book.repository.ImageRepository;
-import com.metis.book.repository.InventoryRepository;
-import com.metis.book.repository.LanguageRepository;
-import com.metis.book.repository.OrderItemRepository;
-import com.metis.book.repository.OrderRepository;
-import com.metis.book.repository.OrderTrackRepository;
-import com.metis.book.repository.RoleRepository;
-import com.metis.book.repository.UserRepository;
-import com.metis.book.utils.AppConstant;
-
 import groovyjarjarantlr4.v4.parse.ANTLRParser.block_return;
+import hcmute.model.Aim;
+import hcmute.model.Author;
+import hcmute.model.Blog;
+import hcmute.model.Book;
+import hcmute.model.Cart;
+import hcmute.model.CartItem;
+import hcmute.model.Category;
+import hcmute.model.Feedback;
+import hcmute.model.Image;
+import hcmute.model.Inventory;
+import hcmute.model.Language;
+import hcmute.model.order.OrderItem;
+import hcmute.model.order.OrderTrack;
+import hcmute.model.user.Address;
+import hcmute.model.user.Role;
+import hcmute.model.user.RoleName;
+import hcmute.model.user.User;
+import hcmute.repository.AddressRepository;
+import hcmute.repository.AimRepository;
+import hcmute.repository.AuthorRepository;
+import hcmute.repository.BlogRepository;
+import hcmute.repository.BookRepository;
+import hcmute.repository.CartItemReposirory;
+import hcmute.repository.CartReposiroty;
+import hcmute.repository.CategoryRepository;
+import hcmute.repository.FeedbackRepository;
+import hcmute.repository.ImageRepository;
+import hcmute.repository.InventoryRepository;
+import hcmute.repository.LanguageRepository;
+import hcmute.repository.OrderItemRepository;
+import hcmute.repository.OrderRepository;
+import hcmute.repository.OrderTrackRepository;
+import hcmute.repository.RoleRepository;
+import hcmute.repository.UserRepository;
+import hcmute.utils.AppConstant;
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
@@ -753,7 +752,7 @@ public class InsertData {
 		OrderTrack trackDelivering = orderTrackRepository.findByStatus("Đang giao");
 
 		// Create order1
-		com.metis.book.model.order.Order order1 = new com.metis.book.model.order.Order();
+		hcmute.model.order.Order order1 = new hcmute.model.order.Order();
 		order1.setOrderDate(new Date());
 		order1.setOrderTrack(trackDelivering);
 		order1.setPaymentMethod("Cash");
@@ -765,7 +764,7 @@ public class InsertData {
 		order1.setUpdateBy(2L);
 		orderRepository.save(order1);
 
-		com.metis.book.model.order.Order order2 = new com.metis.book.model.order.Order();
+		hcmute.model.order.Order order2 = new hcmute.model.order.Order();
 		order2.setOrderDate(new Date());
 		order2.setOrderTrack(trackDelivering);
 		order2.setPaymentMethod("momo");
@@ -789,9 +788,9 @@ public class InsertData {
 		}
 
 		// get order1
-		com.metis.book.model.order.Order order1 = orderRepository.findById(1L).get();
+		hcmute.model.order.Order order1 = orderRepository.findById(1L).get();
 		// get order2
-		com.metis.book.model.order.Order order2 = orderRepository.findById(2L).get();
+		hcmute.model.order.Order order2 = orderRepository.findById(2L).get();
 
 		// get Book1
 		Book book1 = bookRepository.findById(1L).get();
