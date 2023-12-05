@@ -50,7 +50,7 @@ public class ShopController {
 		filterForm.setTextSearch("");
 		ModelAndView mav = new ModelAndView();
 		if(page <= 0) page = 1;
-		mav.addObject("Laptops", Laptops);
+		mav.addObject("laptops", Laptops);
 		mav.addObject("categories", categories);
 		mav.addObject("filterForm", filterForm);
 		mav.addObject("numAllLaptops", numAllLaptops);
@@ -76,7 +76,7 @@ public class ShopController {
 		Long numAllLaptops = laptopService.getNumAllLaptops();
 		ModelAndView mav = new ModelAndView();
 		if(page <= 0) page = 1;
-		mav.addObject("Laptops", Laptops);
+		mav.addObject("laptops", Laptops);
 		mav.addObject("categories", categories);
 		mav.addObject("filterForm", filterForm);
 		mav.addObject("numAllLaptops", numAllLaptops);

@@ -75,27 +75,27 @@
 										</td>
 										<td class="thumbnail-img">
 											<a href="#">
-												<img th:if="${cartItem.book.image.title}"
-													th:src="@{${'/uploads/books/'+cartItem.book.image.title}}"
+												<img th:if="${cartItem.laptop.image.title}"
+													th:src="@{${'/uploads/laptops/'+cartItem.laptop.image.title}}"
 													class="img-fluid" />
-												<img th:if="${cartItem.book.image.thumbnailName!=null && cartItem.book.image.title == null }"
-													th:src="@{${'/uploads/'+cartItem.book.image.thumbnailName}}"
+												<img th:if="${cartItem.laptop.image.thumbnailName!=null && cartItem.laptop.image.title == null }"
+													th:src="@{${'/uploads/'+cartItem.laptop.image.thumbnailName}}"
 													class="img-fluid" />
 											</a>
 										</td>
 										<td class="name-pr">
 											<a href="#">
-												[[${cartItem.book.title}]]
+												[[${cartItem.laptop.title}]]
 											</a>
 										</td>
 										<td class="price-pr">
-											<p>[[${cartItem.book.price}]] VNĐ</p>
+											<p>[[${cartItem.laptop.price}]] VNĐ</p>
 										</td>
 										<td class="quantity-box">
 											<input type="number" size="4" th:value="${cartItem.quantity}" min="0" step="1" 
 												oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
 												onfocus="this.oldValue = this.value;"
-												th:onchange="updatePrice([[${cartItem.id}]],[[${cartItem.book.price}]],this)"
+												th:onchange="updatePrice([[${cartItem.id}]],[[${cartItem.laptop.price}]],this)"
 												class="c-input-text qty text">
 											<p></p>
 										</td>

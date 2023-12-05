@@ -54,12 +54,12 @@
 									id="list-group-men" data-children=".sub-men">
 									<a th:styleappend="${cur_category=='Tatca'? 'font-weight: 600; color:#d33b33;' : ''}"
 										th:href="@{/shop/Tatca?page=1}" class="list-group-item list-group-item-action">
-										Tất cả <small class="text-muted"> ([[${numAllBooks}]]) </small></a>
+										Tất cả <small class="text-muted"> ([[${numAlllaptops}]]) </small></a>
 									<a th:each="category:${categories}"
 										th:styleappend="${cur_category==category.getDomain()? 'font-weight: 600; color:#d33b33;' : ''}"
 										th:href="@{/shop/{categoryName}?page=1(categoryName=${category.getDomain()})}"
 										class="list-group-item list-group-item-action"> [[${category.name}]] <small
-											class="text-muted"> ([[${#lists.size(category.books)}]]) </small></a>
+											class="text-muted"> ([[${#lists.size(category.laptops)}]]) </small></a>
 								</div>
 							</div>
 
@@ -78,6 +78,8 @@
 									</p>
 								</div>
 							</div>
+							
+						</div>
 					</div>
 					<div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
 						<div class="right-product-box">
@@ -92,7 +94,7 @@
 											<option th:selected="${sort == value}" value="decre">Giá giảm dần</option>
 										</select>
 									</div>
-									<p>Tất cả [[${#lists.size(books)}]] sản phẩm</p>
+									<p>Tất cả [[${#lists.size(laptops)}]] sản phẩm</p>
 								</div>
 								<div class="col-12 col-sm-4 text-center text-sm-right">
 									<ul class="nav nav-tabs ml-auto">
@@ -112,8 +114,8 @@
 								<div class="tab-content">
 									<div role="tabpanel" class="tab-pane fade show active" id="grid-view">
 										<div class="row">
-											<div style="display: none;" th:id="${'short' + bookStat.index}"
-												class="col-sm-6 col-md-6 col-lg-4 col-xl-4" th:each="book:${books}">
+											<div style="display: none;" th:id="${'short' + laptopStat.index}"
+												class="col-sm-6 col-md-6 col-lg-4 col-xl-4" th:each="laptop:${laptops}">
 												<div class="products-single fix">
 
 													<div class="box-img-hover">
@@ -121,28 +123,28 @@
 															<p class="sale">Còn bán</p>
 														</div>
 
-														<img th:if="${book.image.title}"
-															th:src="@{${'/uploads/books/'+ book.image.title}}"
+														<img th:if="${laptop.image.title}"
+															th:src="@{${'/uploads/laptops/'+ laptop.image.title}}"
 															class="img-fluid" />
-														<img th:if="${book.image.thumbnailName!=null && book.image.title == null }"
-															th:src="@{${'/uploads/'+ book.image.thumbnailName}}"
+														<img th:if="${laptop.image.thumbnailName!=null && laptop.image.title == null }"
+															th:src="@{${'/uploads/'+ laptop.image.thumbnailName}}"
 															class="img-fluid" />
 														<div class="mask-icon">
 															<ul>
-																<li><a th:href="@{/shop-detail(bookId=${book.id})}"
+																<li><a th:href="@{/shop-detail(laptopId=${laptop.id})}"
 																		data-toggle="tooltip" data-placement="right"
 																		title="View"><i class="fas fa-eye"></i></a></li>
 															</ul>
 															<a class="cart"
-																th:href="@{/member/cart/add(bookId=${book.id})}">Thêm
+																th:href="@{/member/cart/add(laptopId=${laptop.id})}">Thêm
 																vào giỏ hàng</a>
 														</div>
 													</div>
 													<div class="why-text">
-														<a th:href="@{/shop-detail(bookId=${book.id})}">
-															<h3 class="collapse-shorttitle"><b>[[${book.title}]]</b>
+														<a th:href="@{/shop-detail(laptopId=${laptop.id})}">
+															<h3 class="collapse-shorttitle"><b>[[${laptop.title}]]</b>
 															</h3>
-															<h5><small>[[${book.price}]] VNĐ</small></h5>
+															<h5><small>[[${laptop.price}]] VNĐ</small></h5>
 														</a>
 
 													</div>
@@ -151,8 +153,8 @@
 										</div>
 									</div>
 									<div role="tabpanel" class="tab-pane fade tab-pane-custom" id="list-view">
-										<div style="display: none;" class="list-view-box" th:each="book:${books}"
-											th:id="${'long' + bookStat.index}">
+										<div style="display: none;" class="list-view-box" th:each="laptop:${laptops}"
+											th:id="${'long' + laptopStat.index}">
 											<div class="row">
 												<div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
 													<div class="products-single fix">
@@ -160,15 +162,15 @@
 															<div class="type-lb">
 																<p class="new">New</p>
 															</div>
-															<img th:if="${book.image.title}"
-																th:src="@{${'/uploads/books/'+ book.image.title}}"
+															<img th:if="${laptop.image.title}"
+																th:src="@{${'/uploads/laptops/'+ laptop.image.title}}"
 																class="img-fluid" />
-															<img th:if="${book.image.thumbnailName!=null && book.image.title == null }"
-																th:src="@{${'/uploads/'+ book.image.thumbnailName}}"
+															<img th:if="${laptop.image.thumbnailName!=null && laptop.image.title == null }"
+																th:src="@{${'/uploads/'+ laptop.image.thumbnailName}}"
 																class="img-fluid" />
 															<div class="mask-icon">
 																<ul>
-																	<li><a th:href="@{/shop-detail(bookId=${book.id})}"
+																	<li><a th:href="@{/shop-detail(laptopId=${laptop.id})}"
 																			data-toggle="tooltip" data-placement="right"
 																			title="Chi tiết"><i class="fas fa-eye"></i></a>
 																	</li>
@@ -179,14 +181,14 @@
 												</div>
 												<div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
 													<div class="why-text full-width">
-														<a th:href="@{/shop-detail(bookId=${book.id})}">
-															<h4>[[${book.title}]]</h4>
-															<h5>[[${book.price}]] VNĐ</h5>
+														<a th:href="@{/shop-detail(laptopId=${laptop.id})}">
+															<h4>[[${laptop.title}]]</h4>
+															<h5>[[${laptop.price}]] VNĐ</h5>
 														</a>
 
-														<p class="collapse-description">[[${book.description}]]</p>
+														<p class="collapse-description">[[${laptop.description}]]</p>
 														<a class="btn hvr-hover"
-															th:href="@{/member/cart/add(bookId=${book.id})}">Thêm vào
+															th:href="@{/member/cart/add(laptopId=${laptop.id})}">Thêm vào
 															giỏ hàng</a>
 													</div>
 												</div>
@@ -194,16 +196,16 @@
 										</div>
 									</div>
 								</div>
-								<div th:styleappend="${#lists.size(books) > 0 ? 'display: block' : 'display: none'}"
+								<div th:styleappend="${#lists.size(laptops) > 0 ? 'display: block' : 'display: none'}"
 									class="container pagination-custom">
 									<input style="display: none;" id="cur_page" th:value="${cur_page}">
-									<input style="display: none;" id="size" th:value="${#lists.size(books)}">
+									<input style="display: none;" id="size" th:value="${#lists.size(laptops)}">
 									<ul id="pagination" class="pagination">
 										<li id="p-before" class="page-item"><a class="page-link">Trước</a></li>
 										<li id="p-after" class="page-item"><a class="page-link">Sau</a></li>
 									</ul>
 								</div>
-								<div th:styleappend="${#lists.size(books) > 0 ? 'display: none' : 'display: block'}"
+								<div th:styleappend="${#lists.size(laptops) > 0 ? 'display: none' : 'display: block'}"
 									class="alert alert-danger">
 									<strong>Xin lỗi!</strong> Không tìm thấy sách.
 								</div>

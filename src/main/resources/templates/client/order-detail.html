@@ -67,21 +67,21 @@
 													<tr th:each="orderItem : ${order.orderItems}">
 														<td class="thumbnail-img">
 															<a href="#">
-																<img th:if="${orderItem.book.image.title}"
-																	th:src="@{${'/uploads/books/'+orderItem.book.image.title}}"
+																<img th:if="${orderItem.laptop.image.title}"
+																	th:src="@{${'/uploads/laptops/'+orderItem.laptop.image.title}}"
 																	class="img-fluid" />
-																<img th:if="${orderItem.book.image.thumbnailName!=null && orderItem.book.image.title == null }"
-																	th:src="@{${'/uploads/'+orderItem.book.image.thumbnailName}}"
+																<img th:if="${orderItem.laptop.image.thumbnailName!=null && orderItem.laptop.image.title == null }"
+																	th:src="@{${'/uploads/'+orderItem.laptop.image.thumbnailName}}"
 																	class="img-fluid" />
 															</a>
 														</td>
 														<td class="name-pr">
 															<div style="height:70px; width:400px;overflow:auto;">
-																[[${orderItem.book.title}]]
+																[[${orderItem.laptop.title}]]
 															</div>
 														</td>
 														<td class="price-pr">
-															<p>[[${orderItem.book.price}]] VNĐ</p>
+															<p>[[${orderItem.laptop.price}]] VNĐ</p>
 														</td>
 														<td class="quantity-box">
 															<p>[[${orderItem.quantity}]]</p>

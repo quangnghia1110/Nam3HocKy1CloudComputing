@@ -248,18 +248,18 @@
 										
 										<div class="col-2">
 											<a href="#">
-												<img style="max-width:100%;" th:if="${cartItem.book.image.title}"
-													th:src="@{${'/uploads/books/'+cartItem.book.image.title}}"
+												<img style="max-width:100%;" th:if="${cartItem.laptop.image.title}"
+													th:src="@{${'/uploads/laptops/'+cartItem.laptop.image.title}}"
 													class="img-fluid" />
 												<img style="max-width:100%;"
-													th:if="${cartItem.book.image.thumbnailName!=null && cartItem.book.image.title == null }"
-													th:src="@{${'/uploads/'+cartItem.book.image.thumbnailName}}"
+													th:if="${cartItem.laptop.image.thumbnailName!=null && cartItem.laptop.image.title == null }"
+													th:src="@{${'/uploads/'+cartItem.laptop.image.thumbnailName}}"
 													class="img-fluid" />
 											</a>
 										</div>
 										<div class="media-body col"> <a href="detail.html">
-												[[${cartItem.book.title}]]</a>
-											<div class="small text-muted">Giá: [[${cartItem.book.price}]] VNĐ <span
+												[[${cartItem.laptop.title}]]</a>
+											<div class="small text-muted">Giá: [[${cartItem.laptop.price}]] VNĐ <span
 													class="mx-2">|</span> Số :
 												[[${cartItem.quantity}]] <span class="mx-2">|</span> Tổng:
 												[[${cartItem.getTotalPrice()}]] VNĐ</div>
