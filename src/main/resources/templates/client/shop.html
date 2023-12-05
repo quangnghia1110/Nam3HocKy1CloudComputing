@@ -78,34 +78,6 @@
 									</p>
 								</div>
 							</div>
-							<div class="filter-brand-left">
-								<div class="title-left">
-									<h3>Nhà xuất bản</h3>
-								</div>
-								<div class="brand-box">
-									<ul>
-										<li>
-											<div class="radio radio-danger">
-												<input name="survey" id="Radios1" th:field="*{publisherName}"
-													value="Tất cả" type="radio"
-													th:checked="${publisherName}=='Tất cả' ? 'checked'">
-												<label for="Radios1"> Tất cả </label>
-											</div>
-										</li>
-										<li th:each="publisher:${publishers}">
-											<div class="radio radio-danger">
-												<input name="survey" th:id="${'Radios' + publisherStat.index + 2}"
-													th:field="*{publisherName}" th:value="${publisher}" type="radio"
-													th:checked="${publisherName == publisher}">
-												<label th:for="${'Radios' + publisherStat.index + 2}"> [[${publisher}]]
-												</label>
-											</div>
-										</li>
-									</ul>
-									<button class="btn hvr-hover" type="submit" style="color: white;">Lọc</button>
-								</div>
-							</div>
-						</div>
 					</div>
 					<div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
 						<div class="right-product-box">

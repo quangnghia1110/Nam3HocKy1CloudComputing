@@ -57,6 +57,7 @@ public class LaptopServiceImpl implements ILaptopService {
 		laptop.setReleaseDate(new SimpleDateFormat("yyyy-MM-dd").parse(laptopForm.getReleaseDate()));
 		laptop.setAvailable(true);
 		laptop.setCategory(categoryRepository.findById(laptopForm.getCategory().getId()).get());
+		laptop.setTitle(laptopForm.getTitle());
 		Inventory inventory = new Inventory();
 		inventory.setQuantiy(Integer.parseInt(laptopForm.getQuantity()));
 		inventoryRepository.save(inventory);
@@ -251,12 +252,6 @@ public class LaptopServiceImpl implements ILaptopService {
 			if (laptop.getPrice() >= filterForm.getMinPrice() && laptop.getPrice() <= filterForm.getMaxPrice()) {
 				filterlaptops.add(laptop);
 			}
-		}
-		if (filterForm.getPublisherName().compareTo("Tất cả") != 0) {
-			laptops.clear();
-			laptops.addAll(filterlaptops);
-
-			filterlaptops.clear();
 		}
 		if (filterlaptops.size() < 2) {
 			return filterlaptops;

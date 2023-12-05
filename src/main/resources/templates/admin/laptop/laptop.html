@@ -52,12 +52,10 @@
                                     <thead>
                                         <tr>
                                             <th width="5%">ID</th>
-                                            <th width="15%">Tựa sách</th>
-                                            <th width="5%">Giá sách</th>
-                                            <th width="5%">Nhà xuất bản</th>
+                                            <th width="15%">Tiêu đề</th>
+                                            <th width="5%">Giá bán</th>
                                             <th width="10%">Mô tả</th>
-                                            <th width="5%">Ngày xuất bản</th>
-                                            <th width="5%">Tác giả</th>
+                                            <th width="5%">Ngày ra mắt</th>
                                             <th width="5%">Số lượng</th>
                                             <th width="5%">Trạng thái</th>
                                             <th width="5%">Ngày tạo</th>
@@ -69,13 +67,11 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th width="5%">ID</th>
-                                            <th width="15%">Tựa sách</th>
-                                            <th width="5%">Giá sách</th>
-                                            <th width="5%">Nhà xuất bản</th>
+                                           <th width="5%">ID</th>
+                                            <th width="15%">Tiêu đề</th>
+                                            <th width="5%">Giá bán</th>
                                             <th width="10%">Mô tả</th>
-                                            <th width="5%">Ngày xuất bản</th>
-                                            <th width="5%">Tác giả</th>
+                                            <th width="5%">Ngày ra mắt</th>
                                             <th width="5%">Số lượng</th>
                                             <th width="5%">Trạng thái</th>
                                             <th width="5%">Ngày tạo</th>
@@ -90,18 +86,12 @@
                                             <td>[[${laptop.id}]]</td>
                                             <td>[[${laptop.title}]]</td>
                                            	<td>[[${laptop.price}]]</td>
-                                           	<td>[[${laptop.publisherName}]]</td>
                                            	<td>
 	                                           	<div style="height:70px; width:100%; overflow: auto;">
 	                                           		[[${laptop.description}]]
 	                                           	</div>
                                            	</td>
-                                           	<td>[[${laptop.publicationDate}]]</td>
-                                           	<td>
-												<th:block th:each="author : ${laptop.authors}">
-												[[${author}]] <span th:if="${authorStat.index < laptop.authors.size()-1}">, </span>
-												</th:block>
-											</td>
+                                           	<td>[[${laptop.releaseDate}]]</td>
 											<td>[[${laptop.quantity}]]</td>
 											<td>[[${laptop.available}]]</td>
                                             <td>[[${laptop.createDate}]]</td>

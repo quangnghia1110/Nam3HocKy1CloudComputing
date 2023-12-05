@@ -46,7 +46,6 @@ public class ShopController {
 		FilterForm filterForm = new FilterForm();
 		filterForm.setMaxPrice(laptopService.getMaxPrice());
 		filterForm.setMinPrice(0L);
-		filterForm.setPublisherName("Tất cả");
 		filterForm.setSort("none");
 		filterForm.setTextSearch("");
 		ModelAndView mav = new ModelAndView();
