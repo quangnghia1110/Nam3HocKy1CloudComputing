@@ -86,10 +86,12 @@ public class OrderServiceImpl implements IOrderService{
 				// delete that item in cart to transfer to order
 				cartItemRepository.deleteById(Long.parseLong(item));
 				
+				Book book = cartItem.getBook();
+				Long inventoryId  =book.getInventory().getId();
 				// Decrease quantity
-				Inventory inventory = inventoryRepository.findByBook(cartItem.getBook());
-				inventory.setQuantiy(inventory.getQuantiy() - cartItem.getQuantity());
-				inventoryRepository.save(inventory);
+				Optional<Inventory> inventory = inventoryRepository.findById(inventoryId);
+				inventory.get().setQuantiy(inventory.get().getQuantiy() - cartItem.getQuantity());
+				inventoryRepository.save(inventory.get());
 			}
 		}
 		OrderTrack orderTrack;
