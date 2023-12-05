@@ -9,11 +9,10 @@
 		<version>2.7.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.metis.book</groupId>
-	<artifactId>MetisBook</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>MetisBook</name>
-	<description>Metis&apos;s Book store</description>
+	<groupId>hcmute</groupId>
+	<artifactId>ShopLaptop</artifactId>
+	<version>1.0</version>
+	<name>ShopLaptop</name>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

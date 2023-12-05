@@ -51,6 +51,7 @@ public class ProfileController {
 
 		// get required objects
 		mav = renderObjects();
+		mav.setViewName("/client/profile.html");
 		return mav;
 	}
 

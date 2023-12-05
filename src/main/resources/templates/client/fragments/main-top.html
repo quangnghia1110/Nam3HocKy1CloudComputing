@@ -65,7 +65,8 @@
 												style="max-width:50%;" />
 
 										</a>
-										<small th:text="${#authentication.getPrincipal().getUsername()}"></small>
+										<small
+											style==olor:white;h:text="${#authentication.getPrincipal().getUsername()}"></small>
 									</div>
 									<span>
 										<a style="color: white;" th:href="@{/auth/logout}">Đăng xuất</a>
@@ -75,8 +76,9 @@
 								<div sec:authorize="!isAuthenticated()">
 									<small style="color: white;" class="title">Xin chào</small>
 									<div>
-										<a style="color: white;" th:href="@{/auth/login}">Đăng nhập</a> <span style="color: white;" class="white-transp"> | </span>
-										<a style="color: white;"th:href="@{/auth/register}">Đăng ký</a>
+										<a style="color: white;" th:href="@{/auth/login}">Đăng nhập</a> <span
+											style="color: white;" class="white-transp"> | </span>
+										<a style="color: white;" th:href="@{/auth/register}">Đăng ký</a>
 									</div>
 								</div>
 							</div>
