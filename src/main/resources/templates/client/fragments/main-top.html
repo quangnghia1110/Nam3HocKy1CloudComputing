@@ -9,7 +9,7 @@
 						aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 						<i class="fa fa-bars"></i>
 					</button>
-					<a class="navbar-brand" th:href="@{/}"><img th:src="@{/images/laptop.png}" width="120" height="70"
+					<a class="navbar-brand" th:href="@{/index.html}"><img th:src="@{/images/laptop.png}" width="120" height="70"
 							class="logo" alt=""></a>
 				</div>
 				<!-- End Header Navigation -->
@@ -18,19 +18,13 @@
 				<div class="collapse navbar-collapse" id="navbar-menu">
 					<ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
 						<li th:classappend="${#httpServletRequest.requestURI=='/' ? 'active' : ''}" class="nav-item"><a
-								class="nav-link" th:href="@{/}" style="color: white;">TRANG CHỦ</a></li>
+								class="nav-link" th:href="@{/index.html}" style="color: white;">TRANG CHỦ</a></li>
 						<li th:classappend="${#httpServletRequest.requestURI.contains('/shop') ? 'active' : ''}"
 							class="nav-item"><a class="nav-link" th:href="@{/shop/Tatca?page=1}"
 								style="color: white;">TẤT CẢ</a></li>
 						<li th:classappend="${#httpServletRequest.requestURI.contains('/contact') ? 'active' : ''}"
 							class="nav-item"><a class="nav-link" th:href="@{/contact}" style="color: white;">LIÊN HỆ</a>
 						</li>
-<<<<<<< HEAD
-=======
-						<li th:classappend="${#httpServletRequest.requestURI.contains('/bookrequest') ? 'active' : ''}"
-							class="nav-item"><a class="nav-link" th:href="@{/bookrequest}" style="color: white;">YÊU CẦU
-								SÁCH</a></li>
->>>>>>> branch 'master' of https://github.com/quangnghia1110/doancuoiky.git
 						<li th:classappend="${#httpServletRequest.requestURI.contains('/about') ? 'active' : ''}"
 							class="nav-item"><a class="nav-link" th:href="@{/about}" style="color: white;">THÔNG TIN</a>
 						</li>
