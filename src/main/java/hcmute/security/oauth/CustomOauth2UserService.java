@@ -100,8 +100,6 @@ public class CustomOauth2UserService extends DefaultOAuth2UserService {
 	private User updateUser(User existingUser, OAuth2User oauth2User) {
 		existingUser.setFirstName(oauth2User.getAttribute("given_name"));
 		existingUser.setLastName(oauth2User.getAttribute("family_name"));
-		// set image url in future
-
 		return userService.updateUser(existingUser);
 	}
 
