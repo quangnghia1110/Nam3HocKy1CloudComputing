@@ -40,8 +40,7 @@ public class VerificationTokenServiceImpl implements IVerificationTokenService {
 	@Override
 	public String sendVerificationToken(HttpServletRequest request, VerificationToken newToken,User user) {
 		try {
-            final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-            final String confirmationUrl = appUrl + "/auth/register-confirm?token=" + newToken.getToken();
+            final String confirmationUrl = "https://8081-cs-459503474096-default.cs-asia-southeast1-bool.cloudshell.dev" + "/auth/register-confirm?token=" + newToken.getToken();
             final SimpleMailMessage email = constructVerificationTokenEmail(confirmationUrl, user);
             mailSender.send(email);
         } catch (final MailAuthenticationException e) {
