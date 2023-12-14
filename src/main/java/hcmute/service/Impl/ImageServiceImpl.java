@@ -1,4 +1,4 @@
-package hcmute.serviceImpl;
+package hcmute.service.Impl;
 
 import org.springframework.stereotype.Service;
 

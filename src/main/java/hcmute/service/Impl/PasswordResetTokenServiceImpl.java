@@ -1,4 +1,4 @@
-package hcmute.serviceImpl;
+package hcmute.service.Impl;
 
 import javax.servlet.http.HttpServletRequest;
 

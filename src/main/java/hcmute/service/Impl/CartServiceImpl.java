@@ -1,4 +1,4 @@
-package hcmute.serviceImpl;
+package hcmute.service.Impl;
 
 import java.util.List;
 import java.util.Objects;
@@ -47,7 +47,7 @@ public class CartServiceImpl implements ICartService {
     }
 
     @Override
-    public void addToCart(User user, Long bookId, int quantity) {
+    public void addToCart(User user, Long laptopId, int quantity) {
 
         Optional<Cart> cart = cartReposiroty.findById(user.getCart().getId());
 
@@ -59,19 +59,19 @@ public class CartServiceImpl implements ICartService {
         List<CartItem> cartItems = cart.get().getCartItems();
 
         for (CartItem cartItem : cartItems) {
-            if (bookId == cartItem.getLaptop().getId()) {
-                // increase if already have cartItem with current book id
+            if (laptopId == cartItem.getLaptop().getId()) {
+                // increase if already have cartItem with current laptop id
                 cartItem.setQuantity(cartItem.getQuantity() + quantity);
                 cartItemReposirory.save(cartItem);
                 return;
             }
         }
 
-        // If user's cart not have current book with the id
+        // If user's cart not have current laptop with the id
 
-        Laptop laptop = laptopRepository.findById(bookId).get();
+        Laptop laptop = laptopRepository.findById(laptopId).get();
         if (Objects.isNull(laptop)) {
-            log.error(AppConstant.BOOK_NOT_FOUND + bookId);
+            log.error(AppConstant.LAPTOP_NOT_FOUND + laptopId);
             return;
         }
         CartItem cartItem = new CartItem();

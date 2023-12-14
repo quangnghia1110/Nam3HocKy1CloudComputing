@@ -48,7 +48,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
 		final String message = messages.getMessage("message.regSuccLink", null,
 				"Xin chào "+user.getFirstName()+" "+user.getLastName()+","
 				+"\n\nChúc mừng bạn đã đăng ký tài khoản thành công. Vui lòng nhấn vào link bên dưới để xác thực tài khoản.",null);
-		final String endingMessage = "Thân chào, \nMetis's book store";
+		final String endingMessage = "Thân chào";
 		final SimpleMailMessage email = new SimpleMailMessage();
 		email.setTo(recipientAddress);
 		email.setSubject(subject);

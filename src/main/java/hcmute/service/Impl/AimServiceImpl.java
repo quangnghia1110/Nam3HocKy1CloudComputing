@@ -1,4 +1,4 @@
-package hcmute.serviceImpl;
+package hcmute.service.Impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,7 +39,7 @@ public class AimServiceImpl implements IAimService {
     UserRepository userRepository;
 
     @Autowired
-    LaptopRepository bookRepository;
+    LaptopRepository laptopRepository;
 
     @Override
     public String getSalesData(int year) {
@@ -63,7 +63,7 @@ public class AimServiceImpl implements IAimService {
         return data;
     }
 
-    private void addBookToList(List<OrderItem> list, OrderItem item) {
+    private void addLaptopToList(List<OrderItem> list, OrderItem item) {
         for (OrderItem orderItem : list) {
             if (orderItem.getLaptop().equals(item.getLaptop())) {
                 orderItem.setQuantity(orderItem.getQuantity() + item.getQuantity());
@@ -123,7 +123,7 @@ public class AimServiceImpl implements IAimService {
             calendar.setTime(order.getOrderDate());
             if (calendar.get(Calendar.YEAR) == year) {
                 for (OrderItem orderItem : order.getOrderItems()) {
-                    addBookToList(listInYear, orderItem);
+                    addLaptopToList(listInYear, orderItem);
                 }
             }
         }
@@ -209,11 +209,11 @@ public class AimServiceImpl implements IAimService {
         int orderDenominator = Integer.parseInt(list[1]);
         data += orderDenominator != 0 ? String.valueOf(Math.min(100, totalOrder * 100 / orderDenominator)) + " " : "0 ";
 
-        List<Laptop> listBook = bookRepository.findAll();
+        List<Laptop> listLaptop = laptopRepository.findAll();
         float rate = 0;
         int totalRate = 0;
-        for (Laptop book : listBook) {
-            float rateTemp = book.getAvgRate();
+        for (Laptop laptop : listLaptop) {
+            float rateTemp = laptop.getAvgRate();
             if (rateTemp > 0) {
                 rate += rateTemp;
                 totalRate += 1;

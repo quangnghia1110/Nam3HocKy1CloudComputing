@@ -9,6 +9,6 @@ import hcmute.model.Inventory;
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 
-	Inventory findByLaptop(Laptop book);
+	Inventory findByLaptop(Laptop laptop);
 
 }

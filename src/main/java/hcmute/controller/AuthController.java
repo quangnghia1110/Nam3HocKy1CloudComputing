@@ -75,7 +75,7 @@ public class AuthController {
 			String errorMessage = request.getSession().getAttribute("errorMessage").toString();
 			mav.addObject("errorMessage", errorMessage);
 		}
-		mav.setViewName("client/login.html");
+		mav.setViewName("security/login.html");
 		return mav;
 
 	}
@@ -94,7 +94,7 @@ public class AuthController {
 
 		RegisterForm registerRequest = new RegisterForm();
 		mav.addObject("registerRequest", registerRequest);
-		mav.setViewName("client/register.html");
+		mav.setViewName("security/register.html");
 		return mav;
 	}
 
@@ -119,7 +119,7 @@ public class AuthController {
 		mav.addObject("email", savedUser.getEmail());
 		mav.addObject("userId", savedUser.getId());
 		mav.addObject("message", "Xin vui lòng xác thực tài khoản của bạn.");
-		mav.setViewName("client/verify.html");
+		mav.setViewName("security/verify.html");
 		return mav;
 	}
 
@@ -176,13 +176,13 @@ public class AuthController {
 		mav.addObject("email", user.getEmail());
 		mav.addObject("userId", user.getId());
 		mav.addObject("message", "Đường dẫn xác thực đã được làm mới");
-		mav.setViewName("client/verify.html");
+		mav.setViewName("security/verify.html");
 		return mav;
 	}
 
 	@GetMapping("/forgot-password")
 	public ModelAndView viewForgotPasswordPage(ModelAndView mav) {
-		mav.setViewName("client/forgot-password.html");
+		mav.setViewName("security/forgot-password.html");
 		return mav;
 	}
 
@@ -192,7 +192,7 @@ public class AuthController {
 		log.info(email);
 		if (result.hasErrors()) {
 			mav.addObject("errorMessage", "Email không hợp lệ");
-			mav.setViewName("client/forgot-password.html");
+			mav.setViewName("security/forgot-password.html");
 			return mav;
 		}
 
@@ -200,7 +200,7 @@ public class AuthController {
 		User user = userService.findByEmail(email);
 		if (Objects.isNull(user)) {
 			mav.addObject("errorMessage", "Không tìm thấy tài khoản với địa chỉ email này");
-			mav.setViewName("client/forgot-password.html");
+			mav.setViewName("security/forgot-password.html");
 			return mav;
 		}
 
@@ -214,7 +214,7 @@ public class AuthController {
 		}
 		passwordTokenService.sendResetPasswordToken(request, newToken, user);
 		mav.addObject("isSuccess", "Chúng tôi đã gửi cho bạn đường link đặt lại mật khẩu, xin hãy kiểm tra hộp thư");
-		mav.setViewName("client/forgot-password.html");
+		mav.setViewName("security/forgot-password.html");
 		return mav;
 	}
 
@@ -229,11 +229,11 @@ public class AuthController {
 		mav = checkPassWordToken(user, token, passwordToken);
 		if (!mav.isEmpty()) {
 			log.info("aaaaaaaaaaaaa");
-			return mav; // if have violation on token
+			return mav;
 		}
 
 		mav.addObject("token", token);
-		mav.setViewName("client/update-password.html");
+		mav.setViewName("security/update-password.html");
 		return mav;
 	}
 
@@ -245,12 +245,12 @@ public class AuthController {
 
 		if (result.hasErrors()) {
 			mav.addObject("errorMessage", "Mật khẩu không hợp lệ");
-			mav.setViewName("client/update-password.html");
+			mav.setViewName("security/update-password.html");
 			return mav;
 		}
 		if (!passwordForm.getPassword().equals(passwordForm.getConfirmPassword())) {
 			mav.addObject("errorMessage", "Mật khẩu nhập lại không khớp");
-			mav.setViewName("client/update-password.html");
+			mav.setViewName("security/update-password.html");
 			return mav;
 		}
 		User user = userService.getUserByPasswordToken(token);
@@ -298,7 +298,7 @@ public class AuthController {
 		ModelAndView mav = new ModelAndView();
 		// Check constraint on info
 		if (result.hasErrors()) {
-			mav.setViewName("client/register");
+			mav.setViewName("security/register");
 			return mav;
 		}
 
@@ -307,7 +307,7 @@ public class AuthController {
 		// Check constraint on data - duplicate, not match,...
 		if (authenErrors.size() > 0) {
 			mav.addObject("authenErrors", authenErrors);
-			mav.setViewName("client/register");
+			mav.setViewName("security/register");
 			return mav;
 		}
 		return mav;
@@ -363,21 +363,20 @@ public class AuthController {
 		}
 		Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 		if (roles.contains("ROLE_ADMIN")) {
-			return "redirect:/admin/"; // admin page
+			return "redirect:/admin/";
 		} else if (roles.contains("ROLE_USER")) {
-			return "redirect:/"; // home page for user
+			return "redirect:/";
 		}
 		return "";
 	}
 
 	private ModelAndView viewVerifyPage(HttpServletRequest request, ModelAndView mav) {
-			// get session from LoginFailureHandler
 			String email = request.getSession().getAttribute("email").toString();
 			User user = userService.findByEmail(email);
 			mav.addObject("userId", user.getId());
 			mav.addObject("email", user.getEmail());
 			mav.addObject("message", "Xin vui lòng xác thực tài khoản của bạn.");
-			mav.setViewName("client/verify.html");
+			mav.setViewName("security/verify.html");
 			return mav;
 	}
 }

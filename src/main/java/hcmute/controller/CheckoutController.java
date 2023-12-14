@@ -64,7 +64,7 @@ public class CheckoutController {
 			return mav;
 		}
 		if(getStatus(checkoutForm) != 0) {
-			session.setAttribute("error-bookId",getStatus(checkoutForm));
+			session.setAttribute("error-laptopId",getStatus(checkoutForm));
 			mav.setViewName("redirect:/member/cart");
 			return mav;
 		}

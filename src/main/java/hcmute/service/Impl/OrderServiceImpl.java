@@ -1,4 +1,4 @@
-package hcmute.serviceImpl;
+package hcmute.service.Impl;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -198,7 +198,7 @@ public class OrderServiceImpl implements IOrderService{
 	public void updateOrder(OrderShow orderShow) {
 		Order order = orderRepository.findById(orderShow.getOrder().getId()).get();
 		if (Objects.isNull(order)) {
-			log.error(AppConstant.BOOK_NOT_FOUND + orderShow.getOrder().getId());
+			log.error(AppConstant.LAPTOP_NOT_FOUND + orderShow.getOrder().getId());
 		}
 		log.info(orderShow.getOrder().getOrderTrack().getStatus());
 		order.setOrderTrack(trackRepository.findById(orderShow.getOrder().getOrderTrack().getId()).get());

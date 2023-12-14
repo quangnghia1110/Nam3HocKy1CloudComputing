@@ -1,4 +1,4 @@
-package hcmute.serviceImpl;
+package hcmute.service.Impl;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -59,7 +59,7 @@ public class VerificationTokenServiceImpl implements IVerificationTokenService {
 		final String message = messages.getMessage("message.regSuccLink", null,
 				"Xin chào "+user.getFirstName()+" "+user.getLastName()+","
 				+"\n\nChúc mừng bạn đã đăng ký tài khoản thành công. Vui lòng nhấn vào link bên dưới để xác thực tài khoản.",null);
-		final String endingMessage = "Thân chào, \nMetis's book store";
+		final String endingMessage = "Thân chào";
 		final SimpleMailMessage email = new SimpleMailMessage();
 		email.setTo(user.getEmail());
 		email.setSubject(subject);

@@ -23,11 +23,6 @@ public class FileUploadUtils {
 		Files.write(fileNameAndPath, file.getBytes());
 		return fileNameAndPath;
 	}
-	public static Path saveBlogImage(MultipartFile file, Long blogId) throws IOException {
-		Path fileNameAndPath = Paths.get(AppConstant.UPLOAD_BLOG_DIRECTORY, blogId.toString()+".png");
-		Files.write(fileNameAndPath, file.getBytes());
-		return fileNameAndPath;
-	}
 	public static Path saveCategorryImage(MultipartFile file, Long categoryId) throws IOException {
 		Path fileNameAndPath = Paths.get(AppConstant.UPLOAD_CATEGORY_DIRECTORY, categoryId.toString()+".png");
 		Files.write(fileNameAndPath, file.getBytes());

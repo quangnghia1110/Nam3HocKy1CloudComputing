@@ -32,7 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ShopDetailController {
 
 	@Autowired
-	ILaptopService bookService;
+	ILaptopService laptopService;
 	
 	@Autowired
 	IFeedbackService feedbackService;
@@ -68,15 +68,15 @@ public class ShopDetailController {
 		
 
 		
-		LaptopForm book = bookService.getById(Long.parseLong(laptopId)); 
-		int sold = bookService.getSoldNumberById(Long.parseLong(laptopId));
-		List<Laptop> topFeatured = bookService.getTopFeatured();
+		LaptopForm laptop = laptopService.getById(Long.parseLong(laptopId)); 
+		int sold = laptopService.getSoldNumberById(Long.parseLong(laptopId));
+		List<Laptop> topFeatured = laptopService.getTopFeatured();
 		List<Feedback> feedbacks = feedbackService.getFeedbacksById(Long.parseLong(laptopId));
 		
 		mav.addObject("feedbacks", feedbacks);
 		mav.addObject("topFeatured",topFeatured);
 		mav.addObject("sold",sold);
-		mav.addObject("book",book);
+		mav.addObject("laptop",laptop);
 		Feedback feedback = new Feedback();
 		feedback.setRating(5);
 		mav.addObject("feedback",feedback);

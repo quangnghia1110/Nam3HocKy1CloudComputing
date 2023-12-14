@@ -1,4 +1,4 @@
-package hcmute.serviceImpl;
+package hcmute.service.Impl;
 
 import java.io.IOException;
 import java.nio.file.Path;

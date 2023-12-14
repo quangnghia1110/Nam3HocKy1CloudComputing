@@ -1,4 +1,4 @@
-package hcmute.serviceImpl;
+package hcmute.service.Impl;
 
 
 import lombok.extern.slf4j.Slf4j;
