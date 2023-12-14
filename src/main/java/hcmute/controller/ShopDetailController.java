@@ -46,7 +46,7 @@ public class ShopDetailController {
 	@GetMapping
 	public ModelAndView viewShopDetailPage(
 			ModelAndView mav,
-			@RequestParam("bookId") String bookId) throws ParseException {
+			@RequestParam("laptopId") String laptopId) throws ParseException {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Boolean isComment = false;
 		try {
@@ -55,7 +55,7 @@ public class ShopDetailController {
 			if(Objects.nonNull(authentication)) {
 				UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 				user = userService.getUserById(userPrincipal.getId());
-				isComment = orderService.ExistByUserAndBook(user, Long.parseLong(bookId));
+				isComment = orderService.ExistByUserAndBook(user, Long.parseLong(laptopId));
 
 			}
 			
@@ -68,10 +68,10 @@ public class ShopDetailController {
 		
 
 		
-		LaptopForm book = bookService.getById(Long.parseLong(bookId)); 
-		int sold = bookService.getSoldNumberById(Long.parseLong(bookId));
+		LaptopForm book = bookService.getById(Long.parseLong(laptopId)); 
+		int sold = bookService.getSoldNumberById(Long.parseLong(laptopId));
 		List<Laptop> topFeatured = bookService.getTopFeatured();
-		List<Feedback> feedbacks = feedbackService.getFeedbacksById(Long.parseLong(bookId));
+		List<Feedback> feedbacks = feedbackService.getFeedbacksById(Long.parseLong(laptopId));
 		
 		mav.addObject("feedbacks", feedbacks);
 		mav.addObject("topFeatured",topFeatured);
