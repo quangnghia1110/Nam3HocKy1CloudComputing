@@ -13,7 +13,13 @@
 </head>
 
 <body>
-
+	<script>
+	  // JavaScript function to handle image loading error
+	  function reloadImage(img, url) {
+	    img.src = url;
+	    img.removeAttribute('onerror'); // Optional: Remove onerror attribute after handling the error
+	  }
+	</script>
 
 
 	<div th:replace="~{client/fragments/main-top :: mainTop}"></div>
@@ -77,10 +83,12 @@
 											<a href="#">
 												<img th:if="${cartItem.laptop.image.title}"
 													th:src="@{${'/uploads/laptops/'+cartItem.laptop.image.title}}"
-													class="img-fluid" />
+													class="img-fluid" 
+													th:attr="onerror='reloadImage(this, \'' + ${cartItem.laptop.image.url} + '\')'"/>
 												<img th:if="${cartItem.laptop.image.thumbnailName!=null && cartItem.laptop.image.title == null }"
 													th:src="@{${'/uploads/'+cartItem.laptop.image.thumbnailName}}"
-													class="img-fluid" />
+													class="img-fluid" 
+													th:attr="onerror='reloadImage(this, \'' + ${cartItem.laptop.image.url} + '\')'"/>
 											</a>
 										</td>
 										<td class="name-pr">
