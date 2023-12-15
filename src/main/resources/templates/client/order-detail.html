@@ -15,6 +15,13 @@
 </head>
 
 <body>
+	<script>
+	  // JavaScript function to handle image loading error
+	  function reloadImage(img, url) {
+	    img.src = url;
+	    img.removeAttribute('onerror'); // Optional: Remove onerror attribute after handling the error
+	  }
+	</script>
 	<div th:replace="~{client/fragments/main-top :: mainTop}"></div>
 	<div class="container-fluid mt-3 mb-3">
 
@@ -69,10 +76,12 @@
 															<a href="#">
 																<img th:if="${orderItem.laptop.image.title}"
 																	th:src="@{${'/uploads/laptops/'+orderItem.laptop.image.title}}"
-																	class="img-fluid" />
+																	class="img-fluid" 
+																	th:attr="onerror='reloadImage(this, \'' + ${orderItem.laptop.image.url} + '\')'"/>
 																<img th:if="${orderItem.laptop.image.thumbnailName!=null && orderItem.laptop.image.title == null }"
 																	th:src="@{${'/uploads/'+orderItem.laptop.image.thumbnailName}}"
-																	class="img-fluid" />
+																	class="img-fluid" 
+																	th:attr="onerror='reloadImage(this, \'' + ${orderItem.laptop.image.url} + '\')'"/>
 															</a>
 														</td>
 														<td class="name-pr">

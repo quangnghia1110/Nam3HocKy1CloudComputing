@@ -202,6 +202,7 @@ public class LaptopServiceImpl implements ILaptopService {
 		if (!Objects.isNull(laptop.getImage())) {
 			laptopForm.setImageName(laptop.getImage().getTitle());
 			laptopForm.setThumbnailName(laptop.getImage().getThumbnailName());
+			laptopForm.setUrl(laptop.getImage().getUrl());
 		}
 		laptopForm.setId(laptopId.toString());
 		laptopForm.setPrice(laptop.getPrice().toString());
