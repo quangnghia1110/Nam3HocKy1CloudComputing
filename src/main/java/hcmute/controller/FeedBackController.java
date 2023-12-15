@@ -26,12 +26,12 @@ public class FeedBackController {
 	public ModelAndView sendFeedBack(
 			ModelAndView mav, 
 			@ModelAttribute("feedback") Feedback feedback,
-			@RequestParam("bookId") String bookId
+			@RequestParam("laptopId") String laptopId
 			) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal(); 
-		feedbackService.saveFeedback(feedback, userPrincipal.getId(), Long.parseLong(bookId));
-		mav.setViewName("redirect:/shop-detail?bookId=" +bookId);
+		feedbackService.saveFeedback(feedback, userPrincipal.getId(), Long.parseLong(laptopId));
+		mav.setViewName("redirect:/shop-detail?laptopId=" +laptopId);
 		return mav;
 	}
 	
@@ -39,7 +39,7 @@ public class FeedBackController {
 	public ModelAndView deleteFeedBack(
 			ModelAndView mav, 
 			@RequestParam("feedbackId") String feedbackId,
-			@RequestParam("bookId") String bookId ) {
+			@RequestParam("laptopId") String laptopId ) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal(); 
 		Feedback feedback = feedbackService.getById(Long.parseLong(feedbackId));
@@ -51,7 +51,7 @@ public class FeedBackController {
 		else {
 			throw new AccessDeniedException("Bạn không có quyền truy cập");
 		}
-		mav.setViewName("redirect:/shop-detail?bookId=" +bookId);
+		mav.setViewName("redirect:/shop-detail?laptopId=" +laptopId);
 		return mav;
 	}
 }
