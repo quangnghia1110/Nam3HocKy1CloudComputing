@@ -13,6 +13,13 @@
 </head>
 
 <body>
+	<script>
+	  // JavaScript function to handle image loading error
+	  function reloadImage(img, url) {
+	    img.src = url;
+	    img.removeAttribute('onerror'); // Optional: Remove onerror attribute after handling the error
+	  }
+	</script>
 	<div th:replace="~{client/fragments/main-top :: mainTop}"></div>
 
 
@@ -42,9 +49,11 @@
 				<div class="col-xl-4 col-lg-4 col-md-5 d-flex justify-content-end">
 
 					<img th:if="${laptop.ImageName}" th:src="@{${'/uploads/laptops/'+laptop.ImageName}}"
-						class="d-block w-75 img-fluid" />
+						class="d-block w-75 img-fluid" 
+						th:attr="onerror='reloadImage(this, \'' + ${laptop.url} + '\')'"/>
 					<img th:if="${laptop.thumbnailName!=null && laptop.imageName == null }"
-						th:src="@{${'/uploads/'+laptop.thumbnailName}}" class="d-block w-75 img-fluid" />
+						th:src="@{${'/uploads/'+laptop.thumbnailName}}" class="d-block w-75 img-fluid" 
+						th:attr="onerror='reloadImage(this, \'' + ${laptop.url} + '\')'"/>
 				</div>
 				<div class="col-xl-8 col-lg-8 col-md-7">
 					<div class="single-product-details">
@@ -220,9 +229,11 @@
 										<p class="sale">Còn bán</p>
 									</div>
 									<img th:if="${item.image.title}" th:src="@{${'/uploads/laptops/'+item.image.title}}"
-										class="img-fluid" />
+										class="img-fluid" 
+										th:attr="onerror='reloadImage(this, \'' + ${item.image.url} + '\')'"/>
 									<img th:if="${item.image.thumbnailName!=null && item.image.title == null }"
-										th:src="@{${'/uploads/'+item.image.thumbnailName}}" class="img-fluid" />
+										th:src="@{${'/uploads/'+item.image.thumbnailName}}" class="img-fluid" 
+										th:attr="onerror='reloadImage(this, \'' + ${item.image.url} + '\')'"/>
 									<div class="mask-icon">
 										<ul>
 											<li><a th:href="@{/shop-detail(laptopId=${item.id})}" data-toggle="tooltip"

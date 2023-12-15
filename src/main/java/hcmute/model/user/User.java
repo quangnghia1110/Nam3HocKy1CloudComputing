@@ -64,7 +64,7 @@ public class User extends UserDateAudit  {
 	@Column(name = "password", length = 100)
 	private String password;
 		
-	@Column(name = "email", nullable = false, length = 30)
+	@Column(name = "email", nullable = false, length = 50)
 	private String email;
 	
 	@Column(name = "first_name", length = 30)

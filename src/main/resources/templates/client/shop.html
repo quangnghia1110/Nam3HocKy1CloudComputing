@@ -13,7 +13,13 @@
 </head>
 
 <body>
-
+	<script>
+	  // JavaScript function to handle image loading error
+	  function reloadImage(img, url) {
+	    img.src = url;
+	    img.removeAttribute('onerror'); // Optional: Remove onerror attribute after handling the error
+	  }
+	</script>
 	<div th:replace="~{client/fragments/main-top :: mainTop}"></div>
 
 	<!-- Start All Title Box -->
@@ -125,10 +131,12 @@
 
 														<img th:if="${laptop.image.title}"
 															th:src="@{${'/uploads/laptops/'+ laptop.image.title}}"
-															class="img-fluid" />
+															class="img-fluid" 
+															th:attr="onerror='reloadImage(this, \'' + ${laptop.image.url} + '\')'"/>
 														<img th:if="${laptop.image.thumbnailName!=null && laptop.image.title == null }"
 															th:src="@{${'/uploads/'+ laptop.image.thumbnailName}}"
-															class="img-fluid" />
+															class="img-fluid" 
+															th:attr="onerror='reloadImage(this, \'' + ${laptop.image.url} + '\')'"/>
 														<div class="mask-icon">
 															<ul>
 																<li><a th:href="@{/shop-detail(laptopId=${laptop.id})}"
@@ -164,10 +172,12 @@
 															</div>
 															<img th:if="${laptop.image.title}"
 																th:src="@{${'/uploads/laptops/'+ laptop.image.title}}"
-																class="img-fluid" />
+																class="img-fluid" 
+																th:attr="onerror='reloadImage(this, \'' + ${laptop.image.url} + '\')'"/>
 															<img th:if="${laptop.image.thumbnailName!=null && laptop.image.title == null }"
 																th:src="@{${'/uploads/'+ laptop.image.thumbnailName}}"
-																class="img-fluid" />
+																class="img-fluid" 
+																th:attr="onerror='reloadImage(this, \'' + ${laptop.image.url} + '\')'"/>
 															<div class="mask-icon">
 																<ul>
 																	<li><a th:href="@{/shop-detail(laptopId=${laptop.id})}"

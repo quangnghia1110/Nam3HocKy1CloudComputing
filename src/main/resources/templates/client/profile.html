@@ -12,6 +12,13 @@
 </head>
 
 <body>
+	<script>
+	  // JavaScript function to handle image loading error
+	  function reloadImage(img, url) {
+	    img.src = url;
+	    img.removeAttribute('onerror'); // Optional: Remove onerror attribute after handling the error
+	  }
+	</script>
 	<div th:replace="~{client/fragments/main-top :: mainTop}"></div>
 
 	<section class="section-conten padding-y bg mt-3">
@@ -248,9 +255,11 @@
 								
 								<tr th:each="orderItem : ${order.orderItems}">
 									<td width="100">
-									<img th:if ="${orderItem.laptop.image.title}" th:src="@{${'/uploads/laptops/'+orderItem.laptop.image.title}}" class="border img-fluid" />
+									<img th:if ="${orderItem.laptop.image.title}" th:src="@{${'/uploads/laptops/'+orderItem.laptop.image.title}}" class="border img-fluid" 
+									th:attr="onerror='reloadImage(this, \'' + ${orderItem.laptop.image.url} + '\')'"/>
 									<img th:if ="${orderItem.laptop.image.thumbnailName!=null && orderItem.laptop.image.title == null }" th:src="@{${'/uploads/'+orderItem.laptop.image.thumbnailName}}"
-										class="border img-fluid"/>
+										class="border img-fluid"
+										th:attr="onerror='reloadImage(this, \'' + ${orderItem.laptop.image.url} + '\')'"/>
 									</td>
 									<td>
 										<p class="title mb-0">[[${orderItem.laptop.title}]]</p>
