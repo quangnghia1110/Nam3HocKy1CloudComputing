@@ -286,9 +286,9 @@ public class DatabaseInitalizer {
 	}
 
 	private void addUsers() throws IOException {
-		addUser("tin", "tin123", "votrongtin882003@gmail.com", "0347439367", RoleName.ADMIN);
-		addUser("tinuser", "tin123", "votrongtin882003+testapp1@gmail.com", "0347439367", RoleName.USER);
-		addUser("tinstaff", "tin123", "votrongtin882003@+testapp2gmail.com", "0347439367", RoleName.STAFF);
+		addUser("admin", "123456789", "ngoquangnghia111003@gmail.com", "0974117373", RoleName.ADMIN);
+		addUser("user", "123456789", "khachhanglaongnoi01@gmail.com", "0974117373", RoleName.USER);
+		addUser("staff", "123456789", "21110559@student.hcmute.edu.vn", "0974117373", RoleName.STAFF);
 	}
 
 	private void addUser(String username, String password, String email, String phoneNumber, RoleName roleName) {
