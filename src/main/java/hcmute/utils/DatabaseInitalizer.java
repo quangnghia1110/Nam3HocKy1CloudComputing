@@ -65,11 +65,13 @@ public class DatabaseInitalizer {
 	OrderTrackRepository orderTrackRepository;
 
 	public void initDb() throws IOException {
+		createCategoryMap();
+		createCategoryImageMap();
 		addRoles();
 		addUsers();
 		addCategories();
 		addImages();
-		createCategoryMap();
+		
 		addLaptops();
 		addOrderTracks();
 	}
@@ -235,7 +237,35 @@ public class DatabaseInitalizer {
 		for (String categoryName : categoryNames) {
             addCategory(categoryName);
         }
-        
+	}
+	
+	Map<String, String> categoryImageMap = new HashMap<>();
+
+	private void createCategoryImageMap() {
+
+	    // Ultrabooks
+	    categoryImageMap.put("Ultrabooks", "https://th.bing.com/th?id=OSK.7f569a1592975da1e2d6817da1747c5c&w=188&h=132&c=7&o=6&pid=SANGAM");
+
+	    // Gaming Laptops
+	    categoryImageMap.put("Gaming Laptops", "https://th.bing.com/th/id/OIP.OsNZOtb2faZkCJFblZAcTwHaFT?w=236&h=180&c=7&r=0&o=5&pid=1.7");
+
+	    // 2-in-1 Convertible Laptops
+	    categoryImageMap.put("2-in-1 Convertible Laptops", "https://th.bing.com/th/id/R.3cd8a8f7fd83f00050f3ec0026c3bb63?rik=A0%2b6yCAXeCvLEw&pid=ImgRaw&r=0");
+
+	    // Business Laptops
+	    categoryImageMap.put("Business Laptops", "https://th.bing.com/th/id/OIP.c0uQyjDy7iCLEaBlaa1cOwHaFj?rs=1&pid=ImgDetMain");
+
+	    // Budget Laptops
+	    categoryImageMap.put("Budget Laptops", "https://www.digitaltrends.com/wp-content/uploads/2020/06/lenovo-yoga-c740-07.jpg?p=1");
+
+	    // Workstation Laptops
+	    categoryImageMap.put("Workstation Laptops", "https://cdn.mos.cms.futurecdn.net/sRqsW8CCEgazTPknKXAKv4.jpg");
+
+	    // Chromebooks
+	    categoryImageMap.put("Chromebooks", "https://th.bing.com/th/id/R.25adbe0f9b4f20658a889cfe05a3d30b?rik=vGQsz6tDW%2fJh3A&riu=http%3a%2f%2fwww.kitguru.net%2fwp-content%2fuploads%2f2014%2f05%2fasus_c200_chrome_chromebook_chomeos_google.jpg&ehk=HKJxKVEtcIV7OQ3TJrkbuKc8QKiJSzY%2f3UBE8sXJYQU%3d&risl=&pid=ImgRaw&r=0");
+
+	    // Thin & Light Laptops
+	    categoryImageMap.put("Thin & Light Laptops", "https://th.bing.com/th/id/OIP.LrRY8w_KYQq3DrzY9M_OKgAAAA?rs=1&pid=ImgDetMain");
 	}
 	
 	private void addCategory(String categoryName) {
@@ -246,9 +276,20 @@ public class DatabaseInitalizer {
             newCategory.setName(categoryName);
             
             Image imageThumbnail = new Image();
-			imageThumbnail.setThumbnailName("BookThumbnail.png");
-			imageThumbnail
-					.setThumbnailURL("https://th.bing.com/th/id/R.ffbcec602340203f8802af87d536d8f4?rik=o6CTq94xWSI3Vw&riu=http%3a%2f%2fak5.picdn.net%2fshutterstock%2fvideos%2f3486275%2fthumb%2f11.jpg&ehk=ayMY%2bQdXdLmUtDuF1oD57R7jmZDGXhuQlhL3mPoKU%2fc%3d&risl=&pid=ImgRaw&r=0");
+			
+			String imgUrl = categoryImageMap.get(categoryName);
+			if (imgUrl != null) {
+				imageThumbnail.setThumbnailName(categoryName);
+				imageThumbnail.setTitle(categoryName);
+				imageThumbnail.setUrl(imgUrl);
+				imageThumbnail.setThumbnailURL(imgUrl);
+			} else {
+				imageThumbnail.setThumbnailName("Category default");
+				imageThumbnail.setTitle("Category default");
+				imageThumbnail.setThumbnailURL("https://th.bing.com/th/id/R.ffbcec602340203f8802af87d536d8f4?rik=o6CTq94xWSI3Vw&riu=http%3a%2f%2fak5.picdn.net%2fshutterstock%2fvideos%2f3486275%2fthumb%2f11.jpg&ehk=ayMY%2bQdXdLmUtDuF1oD57R7jmZDGXhuQlhL3mPoKU%2fc%3d&risl=&pid=ImgRaw&r=0");
+				imageThumbnail.setUrl("https://th.bing.com/th/id/R.ffbcec602340203f8802af87d536d8f4?rik=o6CTq94xWSI3Vw&riu=http%3a%2f%2fak5.picdn.net%2fshutterstock%2fvideos%2f3486275%2fthumb%2f11.jpg&ehk=ayMY%2bQdXdLmUtDuF1oD57R7jmZDGXhuQlhL3mPoKU%2fc%3d&risl=&pid=ImgRaw&r=0");
+			}
+			
 			imageRepository.save(imageThumbnail);
 			newCategory.setImage(imageThumbnail);
 			categoryRepository.save(newCategory);
@@ -286,9 +327,9 @@ public class DatabaseInitalizer {
 	}
 
 	private void addUsers() throws IOException {
-		//addUser("admin", "123456789", "ngoquangnghia111003@gmail.com", "0974117373", RoleName.ADMIN);
-		//addUser("user", "123456789", "khachhanglaongnoi01@gmail.com", "0974117373", RoleName.USER);
-		//addUser("staff", "123456789", "21110559@student.hcmute.edu.vn", "0974117373", RoleName.STAFF);
+		addUser("admin", "123456789", "votrongtin882003@gmail.com", "0347439367", RoleName.ADMIN);
+		addUser("user", "123456789", "votrongtin882003+testapp1@gmail.com", "0347439367", RoleName.USER);
+		addUser("staff", "123456789", "votrongtin882003+testapp2@gmail.com", "0347439367", RoleName.STAFF);
 	}
 
 	private void addUser(String username, String password, String email, String phoneNumber, RoleName roleName) {
