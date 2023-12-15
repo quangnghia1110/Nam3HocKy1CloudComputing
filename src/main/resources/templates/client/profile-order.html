@@ -12,6 +12,13 @@
 </head>
 
 <body>
+	<script>
+	  // JavaScript function to handle image loading error
+	  function reloadImage(img, url) {
+	    img.src = url;
+	    img.removeAttribute('onerror'); // Optional: Remove onerror attribute after handling the error
+	  }
+	</script>
 	<div th:replace="~{client/fragments/main-top :: mainTop}"></div>
 
 	<section class="section-conten padding-y bg mt-3">
@@ -53,28 +60,24 @@
 
 									<tr th:each="orderItem : ${order.orderItems}">
 										<td width="100">
-											<img th:if="${orderItem.book.image.title}"
-												th:src="@{${'/uploads/books/'+orderItem.book.image.title}}"
-												class="border img-fluid" />
-											<img th:if="${orderItem.book.image.thumbnailName!=null && orderItem.book.image.title == null }"
-												th:src="@{${'/uploads/'+orderItem.book.image.thumbnailName}}"
-												class="border img-fluid" />
+											<img th:if="${orderItem.laptop.image.title}"
+												th:src="@{${'/uploads/laptops/'+orderItem.laptop.image.title}}"
+												class="border img-fluid" 
+												th:attr="onerror='reloadImage(this, \'' + ${orderItem.laptop.image.url} + '\')'"/>
+											<img th:if="${orderItem.laptop.image.thumbnailName!=null && orderItem.laptop.image.title == null }"
+												th:src="@{${'/uploads/'+orderItem.laptop.image.thumbnailName}}"
+												class="border img-fluid" 
+												th:attr="onerror='reloadImage(this, \'' + ${orderItem.laptop.image.thumbnailURL} + '\')'"/>
 										</td>
 										<td>
-											<p class="title mb-0">[[${orderItem.book.title}]]</p>
+											<p class="title mb-0">[[${orderItem.laptop.title}]]</p>
 											<small class="title text-muted">Giá: [[${orderItem.laptop.price}]]
 												VNĐ</small><br>
 											<p class="price text-muted">Tổng: [[${orderItem.getTotalPrice()}]] VNĐ</p>
 										</td>
 										<td width="200" style="word-wrap:break-word;">Số lượng:
 											[[${orderItem.quantity}]]
-											<br>
-											Tác Giả:
-											<th:block th:each="author : ${orderItem.book.authors}">
-												[[${author.name}]] <span
-													th:if="${authorStat.index < orderItem.book.authors.size()-1}">,
-													<br></span>
-											</th:block>
+											
 
 										</td>
 										<td width="200"><a th:href="@{/member/order-detail(orderId=${order.id})}"
