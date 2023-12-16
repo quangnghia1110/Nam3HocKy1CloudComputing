@@ -28,13 +28,13 @@ public class Image {
 	@Column(name = "title")
 	private String title;
 	
-	@Column(name = "url")
+	@Column(name = "url", columnDefinition = "VARCHAR(512)")
 	private String url;
 
 	@Column(name = "thumbnail_name")
 	private String thumbnailName;
 	
-	@Column(name = "thumbnail_url")
+	@Column(name = "thumbnail_url", columnDefinition = "VARCHAR(512)")
 	private String thumbnailURL;
 	
 	@OneToOne(mappedBy = "image", fetch = FetchType.LAZY)
