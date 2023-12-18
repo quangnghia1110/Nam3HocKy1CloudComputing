@@ -37,9 +37,7 @@ public class PasswordResetTokenServiceImpl implements IPasswordResetTokenService
 	@Override
 	public String sendResetPasswordToken(HttpServletRequest request, PasswordResetToken newToken, User user) {
 		try {
-			final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort()
-					+ request.getContextPath();
-			final String resetPasswordUrl = appUrl + "/auth/update-password?token=" + newToken.getToken();
+			final String resetPasswordUrl = "http://localhost:8081" + "/auth/update-password?token=" + newToken.getToken();
 			final SimpleMailMessage email = constructResetTokenEmail(resetPasswordUrl, user);
 			mailSender.send(email);
 		} catch (final MailAuthenticationException e) {

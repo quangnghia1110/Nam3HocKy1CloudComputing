@@ -44,7 +44,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
 			final String token) {
 		final String recipientAddress = user.getEmail();
 		final String subject = "Xác nhận đăng ký";
-		final String confirmationUrl = "https://8081-cs-459503474096-default.cs-asia-southeast1-bool.cloudshell.dev" + "/auth/register-confirm?token=" + token;
+		final String confirmationUrl = "http://localhost:8081" + "/auth/register-confirm?token=" + token;
 		final String message = messages.getMessage("message.regSuccLink", null,
 				"Xin chào "+user.getFirstName()+" "+user.getLastName()+","
 				+"\n\nChúc mừng bạn đã đăng ký tài khoản thành công. Vui lòng nhấn vào link bên dưới để xác thực tài khoản.",null);
