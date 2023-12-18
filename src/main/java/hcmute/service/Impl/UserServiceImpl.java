@@ -347,7 +347,7 @@ public class UserServiceImpl implements IUserService {
 		address.setStreet(checkoutForm.getStreet());
 		address.setRecievePhoneNumber(checkoutForm.getRecievePhoneNumber());
 		if (checkoutForm.getIsPrimary()) {
-			address.setIsPrimary(true); // set primary is true
+			
 			// find all address of user in db and change primary status
 			List<Address> addresses = addressRepository.findByUser(user);
 			for (Address savedAddress : addresses) {
@@ -357,8 +357,13 @@ public class UserServiceImpl implements IUserService {
 					break;
 				}
 			}
+			address.setIsPrimary(true); // set primary is true
 		} else {
 			address.setIsPrimary(false); // set primary is false
+			List<Address> addresses = addressRepository.findByUser(user);
+			if (addresses.size() == 0) {
+				address.setIsPrimary(true);
+			}
 		}
 
 		// save new address
