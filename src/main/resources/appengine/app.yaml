@@ -3,7 +3,7 @@ runtime: java11
 instance_class: F2
 
 env_variables:
-  BUCKET_NAME: "doancuoiky2023"
+  BUCKET_NAME: "doancuoikycloud2023"
 
 handlers:
 - url: /stylesheets
