@@ -34,13 +34,11 @@ public class AdminHomeController {
         String areaData = aimService.getSalesData(year);
 		String pie1Data = "";
 		String pie2Data = "";
-		String cardData = aimService.getAimData(year);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("aimForm", aimForm);
 		mav.addObject("areaData", areaData);
 		mav.addObject("pie1Data", pie1Data);
 		mav.addObject("pie2Data", pie2Data);
-		mav.addObject("cardData", cardData);
 		mav.setViewName("admin/index");
 		return mav;
 	}
@@ -52,13 +50,11 @@ public class AdminHomeController {
         String areaData = aimService.getSalesData(aimForm.getCustomAreaYear());
 		String pie1Data = aimService.getProductData(aimForm.getCustomAreaYear());
 		String pie2Data = aimService.getCustomerData(aimForm.getCustomAreaYear());
-		String cardData = aimService.getAimData(aimForm.getCustomAreaYear());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("aimForm", aimForm);
 		mav.addObject("areaData", areaData);
 		mav.addObject("pie1Data", pie1Data);
 		mav.addObject("pie2Data", pie2Data);
-		mav.addObject("cardData", cardData);
 		mav.setViewName("admin/index");
 		return mav;
 	}
