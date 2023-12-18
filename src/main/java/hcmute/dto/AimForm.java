@@ -15,8 +15,6 @@ public class AimForm {
 	private String totalRevenue;
 	private String numOrder;
 	private String numCustomer;
-	private String avgProReview;
-	private String numProSold;
 	private String areaYear;
 	private String pie1Year;
 	private String pie2Year;
@@ -33,8 +31,6 @@ public class AimForm {
 		totalRevenue = list[0];
 		numOrder = list[1];
 		numCustomer = list[2];
-		avgProReview = list[3];
-		numProSold = list[4];
 	}
 	
 	public void setYear(int year) {
@@ -46,8 +42,7 @@ public class AimForm {
 	
 	public String getData() {
 		String data = "";
-		data += totalRevenue + " " + numOrder + " " + numCustomer + " " + 
-				avgProReview + " " + numProSold;
+		data += totalRevenue + " " + numOrder + " " + numCustomer + " " ;
 		return data;
 	}
 	

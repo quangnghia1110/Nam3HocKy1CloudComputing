@@ -221,22 +221,6 @@ public class AimServiceImpl implements IAimService {
         }
 
         // Check for zero denominator before division
-        float rateDenominator = Float.parseFloat(list[3]);
-        rate /= totalRate;
-        data += rateDenominator != 0 ? String.valueOf(Math.min(100, rate * 100 / rateDenominator)) + " " : "0 ";
-
-        int totalProduct = 0;
-        for (Order order : listOrder) {
-            Calendar calendar = new GregorianCalendar();
-            calendar.setTime(order.getOrderDate());
-            if (calendar.get(Calendar.YEAR) == year) {
-                totalProduct += order.getNumProduct();
-            }
-        }
-
-        // Check for zero denominator before division
-        int productDenominator = Integer.parseInt(list[4]);
-        data += productDenominator != 0 ? String.valueOf(Math.min(100, totalProduct * 100 / productDenominator)) + " " : "0 ";
 
         return data;
     }
